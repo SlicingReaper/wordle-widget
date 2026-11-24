@@ -2,10 +2,11 @@
 
 ![macOS](https://img.shields.io/badge/macOS-Übersicht-3ef0ff?style=flat-square&logo=apple&logoColor=white&labelColor=040914) ![Vibecoded](https://img.shields.io/badge/vibecoded-with%20Claude-ff5ad9?style=flat-square&labelColor=040914)
 
-Guess the five-letter word in six tries, right on your desktop. One word per day, plus unlimited practice once you've played. No backend: the game, both word lists and your stats live in one widget file.
+Guess the five-letter word in six tries, right on your desktop. One word per day, plus a new random word whenever you want. No backend: the game, both word lists and your stats live in one widget file.
 
 | File | What |
 |:--|:--|
+| `wordle-langs.json` | French, Spanish and German lists: 1,300 common answers + ~5,000 allowed guesses each (98 KB) |
 | `wordle.jsx` | The whole game, including the original Wordle word lists (2 315 answers + 10 657 extra allowed guesses, from the MIT-licensed npm package `wordle-words`). |
 
 ## Play
@@ -20,9 +21,15 @@ Guess the five-letter word in six tries, right on your desktop. One word per day
 
 Double letters are scored like the original. Words that aren't in the list shake and don't cost a try.
 
+- **Four languages:** the amber **EN** button cycles **EN → FR → ES → DE**. Each language has its own daily word, stats and keyboard: French on AZERTY with accents ignored (*été* = *ETE*), Spanish with **Ñ**, German on QWERTZ with **Ä Ö Ü**. Physical keys work too, and accented letters typed in French are folded automatically.
 - **One word per day**, new at local midnight. Win or lose, a card shows the word and your 1–6 guess distribution (click it to see the board again).
-- **PRACTICE ▸** after the daily game: random words, as many as you like, stats untouched.
+- **NEW ▸** any time (or ⏎ when a game is over): a random word, as many as you like. Random words don't touch the daily stats; **◂ DAILY** goes back.
 - **Stats:** TODAY · LAST (yesterday's result) · STREAK · MAX streak · WIN %, saved in `~/Library/Application Support/STUDYTERM/wordle.json`.
+
+## 📚 Word lists
+
+- **English:** the original Wordle lists.
+- **French, Spanish, German:** built for this widget. Answers are the 1,300 most frequent five-letter words in subtitle frequency lists ([FrequencyWords](https://github.com/hermitdave/FrequencyWords), OpenSubtitles 2018) that are also real entries in the Hunspell dictionaries ([dictionary-fr / -es / -de](https://github.com/wooorm/dictionaries)). Names were filtered out, mostly. Allowed guesses add every other five-letter word from both sources. Spellings follow common local Wordle conventions: French drops accents, Spanish keeps Ñ, German keeps Ä Ö Ü and leaves out words with ß.
 
 ## 🚀 Install
 
@@ -59,7 +66,7 @@ This widget is one of fifteen that share the same retro-terminal look, the same 
 | ☠ | [**DOOM//TERM**](https://github.com/SlicingReaper/doom-widget) | DOOM shareware Episode 1 in a 2-column widget: WebAssembly engine, savegames kept |
 | ◍ | [**GLOBE//GUESS**](https://github.com/SlicingReaper/globe-widget) | Daily mystery country on a spinning globe: every guess glows hotter the closer it is |
 | ◍ | [**ATLAS//QUIZ**](https://github.com/SlicingReaper/atlas-quiz-widget) | Sporcle-style map quiz: type a name, the country lights up green. World, continents, US states |
-| W | [**WORDLE//**](https://github.com/SlicingReaper/wordle-widget) ← you are here | The daily five-letter word game: six tries, streaks, guess distribution, unlimited practice |
+| W | [**WORDLE//**](https://github.com/SlicingReaper/wordle-widget) ← you are here | Wordle in EN · FR · ES · DE: daily word, a new word any time, streaks, guess distribution |
 | 🎛️ | [**WIDGET//CTL**](https://github.com/SlicingReaper/widgetctl) | Menu-bar app that arranges and themes all the widgets, plus a ⌃⌥⌘W show/hide hotkey |
 
 **Install all of them at once:** [`vibecoded` → install-all.command](https://github.com/SlicingReaper/vibecoded) · 🤖 Vibecoded with [Claude](https://claude.ai): I designed, directed and tested it, the AI wrote most of the code.

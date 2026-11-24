@@ -18,6 +18,7 @@ fi
 [ -d "$HOME/Library/Application Support/Übersicht/widgets" ] || { open -g "$APP"; sleep 5; }
 W="$(ls -d "$HOME/Library/Application Support/"*bersicht/widgets 2>/dev/null | head -1)"
 [ -n "$W" ] || W="$HOME/Library/Application Support/Übersicht/widgets"; mkdir -p "$W"
+mkdir -p "$SUP" && cp "$D/wordle-langs.json" "$SUP/wordle-langs.json" && echo "✓ FR/ES/DE word lists → $SUP" || die "word list copy failed"
 cp "$D/wordle.jsx" "$W/" && echo "✓ wordle.jsx → $W" || die "copy failed"
 open -g "$APP"; sleep 1; osascript -e 'tell application id "tracesOf.Uebersicht" to refresh' 2>/dev/null
 echo "== WORDLE// installed. Click it to use it. If clicks fall through: Übersicht menu-bar icon → wordle.jsx → interaction on."
